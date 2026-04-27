@@ -1,13 +1,11 @@
 import os
-import subprocess
 
-# 1. Грязный метод: использование eval для выполнения строки как кода
-code_str = "print('Hello appsec world (via eval)')"
-eval(code_str)
+# Скрипт запрашивает имя
+name = input("Введите ваше имя: ")
 
-# 2. Еще более грязный метод: использование системного шелла
-# Это "bad practice", так как ведет к инъекциям команд
-os.system("echo 'Hello appsec world (via os.system)'")
+# Вывод через f-строку (имитация "грязного" вызова через систему)
+print(f"Hello appsec world from @{name}")
 
-# 3. Использование subprocess через оболочку
-subprocess.run("echo 'Hello appsec world (via subprocess)'", shell=True)
+# Для наглядности appsec-проблемы: представь, если бы мы сделали так:
+# os.system(f"echo Hello {name}") 
+# Если бы пользователь ввел "; rm -rf /", это бы исполнилось.
