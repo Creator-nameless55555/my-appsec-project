@@ -1,11 +1,17 @@
-import os
+import typer
 
-# Скрипт запрашивает имя
-name = input("Введите ваше имя: ")
+def main(
+    name: str,
+    lastname: str = typer.Option("", help="Фамилия пользователя."),
+    formal: bool = typer.Option(False, "--formal", "-f", help="Использовать формальное приветствие."),
+):
+    """
+    Говорит "Привет" пользователю, опционально используя фамилию и формальный стиль.
+    """
+    if formal:
+        print(f"Добрый день, {name} {lastname}!")
+    else:
+        print(f"Привет, {name}!")
 
-# Вывод через f-строку (имитация "грязного" вызова через систему)
-print(f"Hello appsec world from @{name}")
-
-# Для наглядности appsec-проблемы: представь, если бы мы сделали так:
-# os.system(f"echo Hello {name}") 
-# Если бы пользователь ввел "; rm -rf /", это бы исполнилось.
+if __name__ == "__main__":
+    typer.run(main)
