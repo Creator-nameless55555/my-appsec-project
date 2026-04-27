@@ -1,4 +1,5 @@
 # Программа для приветствия пользователей.
+# ИЗМЕНЕНО В MASTER
 # Master branch version - original comments
 # Использует библиотеку Typer для безопасной обработки аргументов CLI.
 import typer
